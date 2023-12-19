@@ -11,3 +11,8 @@ export interface Claim {
     userOwner: User;
     createdAt: string;
 }
+
+export interface RecentClaimsResponse {
+    recentClaims: Claim[];
+    recentClaimsCount: number;
+}
