@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="block w-full max-w-screen-xl px-2 py-2 mx-auto text-white bg-white border rounded-xl border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200 lg:px-2 lg:py-4">
+    class="block w-full px-2 py-2 mx-auto text-white bg-white border rounded-xl border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200 lg:px-2 lg:py-4 shadow-md">
     <div class="container flex items-center justify-between mx-auto text-blue-gray-900 text-black">
       <a href="#"
         class="mr-4 block cursor-pointer py-1.5 font-sans font-medium leading-relaxed text-inherit antialiased text-black">

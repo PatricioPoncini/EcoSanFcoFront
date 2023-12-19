@@ -39,9 +39,9 @@ export default defineComponent({
 
 <template>
   <div class="grid grid-cols-1 background p-8">
-    <div v-for="claim in claimsStore.recentClaims" :key="claim._id" class="cursor-pointer">
+    <div v-for="claim in claimsStore.recentClaims" :key="claim._id">
       <a @click="viewClaim(claim._id)"
-        class="flex flex-col items-center mx-auto bg-white border border-gray-200 rounded-lg shadow md:flex-row max-w-3xl hover:bg-gray-100 mb-6">
+        class="flex flex-col items-center mx-auto bg-white border border-gray-200 cursor-pointer rounded-lg shadow md:flex-row max-w-3xl hover:bg-gray-100 mb-6">
         <div class="flex flex-col justify-between p-4 leading-normal">
           <div class="flex justify-between">
             <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 text-left title">{{ claim.title }}</h5>
