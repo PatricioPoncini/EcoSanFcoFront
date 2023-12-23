@@ -15,5 +15,8 @@ export const claimApi = {
     },
     async getClaimById(id: string) {
         return await claimBackend.get<Claim>(`/claim/${id}`);
+    },
+    async toggleLike(claimId: string, userId: string) {
+        return await claimBackend.put(`/likeClaim/${claimId}/${userId}`);
     }
 }

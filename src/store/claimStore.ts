@@ -31,6 +31,14 @@ export const useClaimStore = defineStore('claims', {
             } catch (error) {
                 console.log(error);
             }
+        },
+        async toggleLike(claimId: string, userId: string) {
+            try {
+                await claimApi.toggleLike(claimId, userId);
+                await this.setClaim(claimId);
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 });
