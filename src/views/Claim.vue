@@ -3,10 +3,10 @@ import { useClaimStore } from '@/store/claimStore';
 import { mapStores } from 'pinia';
 import { defineComponent } from 'vue';
 import SpinnerLoader from '@/components/SpinnerLoader.vue';
-import { claimApi } from '@/services/claimApi';
+import CommentClaim from '@/components/CommentClaim.vue';
 
 export default defineComponent({
-    components: { SpinnerLoader },
+    components: { SpinnerLoader, CommentClaim },
     data() {
         return {
             claimId: '',
@@ -20,6 +20,7 @@ export default defineComponent({
 
         this.claimId = this.$route.query['claimId'] as string;
         await this.claimsStore.setClaim(this.claimId);
+        await this.claimsStore.getCommentsByClaim(this.claimId);
         if (this.claimsStore.claim.upVotes.includes('655e92ed239d0b217054a283')) {
             this.like = true;
         }
@@ -92,6 +93,14 @@ export default defineComponent({
                 <font-awesome-icon icon="fa-regular fa-message"
                     class="icon h-7 w-7 cursor-pointer transition-transform transform hover:scale-110"
                     @click="handleComment" />
+            </div>
+        </div>
+        <div class="grid grid-cols-1">
+            <div class="flex">
+                <div class="text-black mt-8 text-3xl">Comentarios</div>
+            </div>
+            <div class="flex" v-for="comment in claimsStore.comments">
+                <CommentClaim :content="comment.content" :username="comment.user.username" :createdAt="comment.createdAt" />
             </div>
         </div>
     </div>

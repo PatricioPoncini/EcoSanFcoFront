@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Claim, RecentClaimsResponse } from "./claimApi.types";
+import { Comment } from "./claimApi.types";
 
 const claimBackend = axios.create({
     baseURL: 'http://localhost:1110',
@@ -18,5 +19,8 @@ export const claimApi = {
     },
     async toggleLike(claimId: string, userId: string) {
         return await claimBackend.put(`/likeClaim/${claimId}/${userId}`);
+    },
+    async getCommentsByClaim(claimId: string) {
+        return await claimBackend.get<Comment[]>(`/getCommentsByClaim?claimId=${claimId}`);
     }
 }

@@ -16,3 +16,13 @@ export interface RecentClaimsResponse {
     recentClaims: Claim[];
     recentClaimsCount: number;
 }
+
+export interface Comment {
+    claimId: string;
+    user: {
+        _id: string;
+        username: string;
+    },
+    content: string;
+    createdAt: Date;
+}
