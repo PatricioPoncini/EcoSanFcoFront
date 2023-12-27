@@ -49,6 +49,15 @@ export const useClaimStore = defineStore('claims', {
             } catch (error) {
                 console.log(error);
             }
+        },
+        async postNewComment(userId: string, claimId: string, content: string) {
+            try {
+                await claimApi.postComment(userId, claimId, content);
+                const response = await claimApi.getCommentsByClaim(claimId);
+                this.comments = response.data;
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 });

@@ -22,5 +22,10 @@ export const claimApi = {
     },
     async getCommentsByClaim(claimId: string) {
         return await claimBackend.get<Comment[]>(`/getCommentsByClaim?claimId=${claimId}`);
+    },
+    async postComment(userId: string, claimId: string, content: string) {
+        console.log(claimId)
+        console.log(userId)
+        return await claimBackend.post(`/postComment?userId=${userId}&claimId=${claimId}`, { content: content });
     }
 }
