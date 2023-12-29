@@ -26,3 +26,10 @@ export interface Comment {
     content: string;
     createdAt: Date;
 }
+
+export interface Tokens {
+    token: {
+        authToken: string;
+        refreshToken: string;
+    }
+}

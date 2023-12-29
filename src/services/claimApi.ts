@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Claim, RecentClaimsResponse } from "./claimApi.types";
+import { Claim, RecentClaimsResponse, Tokens } from "./claimApi.types";
 import { Comment } from "./claimApi.types";
 
 const claimBackend = axios.create({
@@ -24,8 +24,9 @@ export const claimApi = {
         return await claimBackend.get<Comment[]>(`/getCommentsByClaim?claimId=${claimId}`);
     },
     async postComment(userId: string, claimId: string, content: string) {
-        console.log(claimId)
-        console.log(userId)
         return await claimBackend.post(`/postComment?userId=${userId}&claimId=${claimId}`, { content: content });
+    },
+    async login(username: string, password: string) {
+        return await claimBackend.post<Tokens>(`/signIn`, { username: username, password: password });
     }
 }

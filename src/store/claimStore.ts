@@ -7,6 +7,7 @@ export interface ClaimState {
     recentClaimsCount: number;
     claim: Claim;
     comments: Comment[];
+    token: string;
 }
 
 export const useClaimStore = defineStore('claims', {
@@ -14,7 +15,8 @@ export const useClaimStore = defineStore('claims', {
         recentClaims: [],
         recentClaimsCount: 0,
         claim: {} as Claim,
-        comments: []
+        comments: [],
+        token: ''
     }),
     actions: {
         async listRecentClaims(page: number, pageSize: number) {
@@ -55,6 +57,14 @@ export const useClaimStore = defineStore('claims', {
                 await claimApi.postComment(userId, claimId, content);
                 const response = await claimApi.getCommentsByClaim(claimId);
                 this.comments = response.data;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async login(email: string, password: string) {
+            try {
+                const response = await claimApi.login(email, password);
+                this.token = response.data.token.authToken;
             } catch (error) {
                 console.log(error);
             }
