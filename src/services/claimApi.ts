@@ -2,17 +2,20 @@ import axios from "axios";
 import { Claim, RecentClaimsResponse, Tokens } from "./claimApi.types";
 import { Comment } from "./claimApi.types";
 
+const authToken = window.localStorage.getItem('authToken');
+
 const claimBackend = axios.create({
     baseURL: 'http://localhost:1110',
     withCredentials: true,
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
     }
 });
 
 export const claimApi = {
     async getRecentClaims(page: number, pageSize: number) {
-        return await claimBackend.get<RecentClaimsResponse>(`/claims/recent?page=${page}&pageSize=${pageSize}`);
+        console.log(authToken)
+        return await claimBackend.get<RecentClaimsResponse>(`/claims/recent?page=${page}&pageSize=${pageSize}`, { headers: { 'Authorization': authToken } });
     },
     async getClaimById(id: string) {
         return await claimBackend.get<Claim>(`/claim/${id}`);

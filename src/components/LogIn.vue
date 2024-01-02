@@ -16,6 +16,8 @@ export default defineComponent({
       if (!this.claimsStore.token) {
         console.log('Error setting user data');
       } else {
+        window.localStorage.setItem('authToken', this.claimsStore.token);
+        console.log(window.localStorage.getItem('authToken'));
         this.$router.push('/recentClaims');
       }
     }

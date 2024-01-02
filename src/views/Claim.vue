@@ -4,7 +4,6 @@ import { mapStores } from 'pinia';
 import { defineComponent } from 'vue';
 import SpinnerLoader from '@/components/SpinnerLoader.vue';
 import CommentClaim from '@/components/CommentClaim.vue';
-import { claimApi } from '@/services/claimApi';
 
 export default defineComponent({
     components: { SpinnerLoader, CommentClaim },
